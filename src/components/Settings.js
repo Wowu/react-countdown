@@ -41,15 +41,18 @@ class Settings extends Component {
       endTime: this.state.time.toDate(),
       countdownName: this.state.name,
     });
+
+    this.props.actions.toggleModal();
   }
 
   render() {
     return(
-      <div className="Settings">
+      <div className={`Settings ${this.props.modalVisible ? '' : 'hidden'}`}>
         <input
           type="text"
           value={this.state.name}
           onChange={this.handleNameChange}
+          placeholder="Countdown name..."
         />
 
         <InputMoment
@@ -69,6 +72,7 @@ class Settings extends Component {
 const mapStateToProps = state => ({
   name: state.countdownName,
   time: state.endTime,
+  modalVisible: state.modalVisible,
 });
 
 const mapDispatchToProps = dispatch => ({

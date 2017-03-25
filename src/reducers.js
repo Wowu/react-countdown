@@ -1,6 +1,12 @@
-import { UPDATE_COUNTDOWN } from './actions';
+import { UPDATE_COUNTDOWN, TOGGLE_MODAL } from './actions';
 
-export const countdown = (state = { endTime: new Date(), name: ''}, action) => {
+const initialCountdownState = {
+  endTime: new Date(),
+  name: '',
+  modalVisible: false,
+}
+
+export const countdown = (state = initialCountdownState, action) => {
   switch (action.type) {
     case UPDATE_COUNTDOWN:
       return {
@@ -8,7 +14,13 @@ export const countdown = (state = { endTime: new Date(), name: ''}, action) => {
         endTime: action.endTime,
         name: action.countdownName,
       }
+    case TOGGLE_MODAL:
+      return {
+        ...state,
+        modalVisible: !state.modalVisible,
+      }
     default:
       return state
   }
 }
+

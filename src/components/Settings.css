@@ -1,3 +1,21 @@
+.Settings {
+  transition: all 0.2s ease;
+  width: 370px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.Settings.hidden {
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+  visibility: hidden;
+}
+
 .m-input-moment .btn-save {
   display: none;
 }
