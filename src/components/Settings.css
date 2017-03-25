@@ -1,0 +1,12 @@
+.m-input-moment .btn-save {
+  display: none;
+}
+
+.m-input-moment .tab {
+  box-sizing: border-box;
+  height: 280px;
+}
+
+.u-slider-time .handle:after {
+  top: -12px;
+}

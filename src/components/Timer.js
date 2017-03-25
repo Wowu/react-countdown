@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 class Timer extends Component {
   constructor(props) {
@@ -57,7 +58,9 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
-  endTime: React.PropTypes.instanceOf(Date).isRequired,
+  endTime: PropTypes.instanceOf(Date).isRequired,
 };
 
-export default Timer;
+const mapStatetoProps = state => ({ endTime: state.endTime });
+
+export default connect(mapStatetoProps)(Timer);
