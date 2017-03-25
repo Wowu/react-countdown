@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Moment from 'moment';
 
 import InputMoment from 'input-moment';
-import * as Actions from '../actions';
+import * as actions from '../actions';
 
 import 'input-moment/dist/input-moment.css';
 import 'font-awesome/css/font-awesome.css';
@@ -37,12 +36,12 @@ class Settings extends Component {
   }
 
   handleSettingsSave() {
-    this.props.actions.updateCountdown({
+    this.props.updateCountdown({
       endTime: this.state.time.toDate(),
       countdownName: this.state.name,
     });
 
-    this.props.actions.toggleModal();
+    this.props.toggleModal();
   }
 
   render() {
@@ -75,8 +74,4 @@ const mapStateToProps = state => ({
   modalVisible: state.modalVisible,
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(Actions, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(mapStateToProps, actions)(Settings);

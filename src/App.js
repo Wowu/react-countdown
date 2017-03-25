@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import Timer from './components/Timer';
 import Settings from './components/Settings';
-import * as Actions from './actions';
+import * as actions from './actions';
 
 import './App.css';
 
@@ -16,7 +15,7 @@ class App extends Component {
   }
 
   toggleSettingsModal() {
-    this.props.actions.toggleModal();
+    this.props.toggleModal();
   }
 
   render() {
@@ -30,8 +29,4 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(Actions, dispatch)
-})
-
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, actions)(App);
