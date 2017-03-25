@@ -6,22 +6,24 @@ class Timer extends Component {
     super(props);
 
     this.state = {
-      intervalId: 0,
+      intervalId: null,
       timeLeft: '',
     };
+
+    this.updateTimeLeft = this.updateTimeLeft.bind(this);
   }
 
   componentDidMount() {
-    this.updateTime();
-    const countdownInterval = setInterval(this.updateTime.bind(this), 1000);
-    this.setState({ intervalId: countdownInterval });
+    this.updateTimeLeft();
+    const intervalId = setInterval(this.updateTimeLeft, 1000);
+    this.setState({ intervalId });
   }
 
   componentWillUnmount() {
     clearInterval(this.state.intervalId);
   }
 
-  updateTime() {
+  updateTimeLeft() {
     let allSecondsLeft = Math.round((this.props.endTime - new Date()) / 1000);
 
     const pastEvent = allSecondsLeft < 0 ? true : false;

@@ -15,20 +15,13 @@ class Settings extends Component {
     super(props);
 
     this.state = {
-      time: Moment(),
-      name: '',
+      time: Moment(props.time),
+      name: props.name,
     };
 
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleSettingsSave = this.handleSettingsSave.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({
-      time: Moment(this.props.time),
-      name: this.props.name,
-    })
   }
 
   handleTimeChange(time) {
@@ -44,7 +37,7 @@ class Settings extends Component {
   }
 
   handleSettingsSave() {
-    this.props.actions.updateSettings({
+    this.props.actions.updateCountdown({
       endTime: this.state.time.toDate(),
       countdownName: this.state.name,
     });

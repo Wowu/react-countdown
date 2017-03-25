@@ -1,7 +1,7 @@
-export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
+export const UPDATE_COUNTDOWN = 'UPDATE_COUNTDOWN';
 
-export const updateSettings = ({endTime, countdownName}) => ({
-  type: UPDATE_SETTINGS,
+export const updateCountdown = ({endTime, countdownName}) => ({
+  type: UPDATE_COUNTDOWN,
   endTime,
   countdownName,
 });

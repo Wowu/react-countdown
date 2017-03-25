@@ -1,12 +1,12 @@
-import { UPDATE_SETTINGS } from './actions';
+import { UPDATE_COUNTDOWN } from './actions';
 
-export const settings = (state, action) => {
+export const countdown = (state = { endTime: new Date(), name: ''}, action) => {
   switch (action.type) {
-    case UPDATE_SETTINGS:
+    case UPDATE_COUNTDOWN:
       return {
         ...state,
         endTime: action.endTime,
-        countdownName: action.countdownName,
+        name: action.countdownName,
       }
     default:
       return state
