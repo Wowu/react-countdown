@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-
 import styled from 'styled-components';
+import leftPad from 'left-pad';
 
 const DaysWrapper = styled.div`
   margin: 0 auto;
@@ -32,7 +32,7 @@ const Clock = styled.div`
   font-family: 'Quicksand', Helvetica Neue, sans-serif;
   font-size: 8.5rem;
   font-weight: 700;
-  color: white;
+  color: ${props => props.pastEvent ? '#a7a6af' : 'white'};
 
   text-shadow: 0 11px 29px rgba(0, 0, 0, 0.2);
 `;
@@ -45,6 +45,7 @@ class Timer extends Component {
       intervalId: null,
       timeLeft: '',
       daysLeft: '',
+      pastEvent: false,
     };
 
     this.updateTimeLeft = this.updateTimeLeft.bind(this);
@@ -64,7 +65,9 @@ class Timer extends Component {
     let allSecondsLeft =
       Math.round((this.props.endTime - new Date()) / 1000);
 
-    // const pastEvent = allSecondsLeft < 0 ? true : false;
+    const pastEvent = allSecondsLeft < 0 ? true : false;
+    this.setState({ pastEvent })
+
     allSecondsLeft = Math.abs(allSecondsLeft);
 
     const SECONDS_IN_DAY = 60 * 60 * 24;
@@ -73,13 +76,16 @@ class Timer extends Component {
 
     const daysLeft = Math.floor(allSecondsLeft / SECONDS_IN_DAY);
     this.setState({ daysLeft });
-
     allSecondsLeft -= daysLeft * SECONDS_IN_DAY;
+
     const hours = Math.floor(allSecondsLeft / SECONDS_IN_HOUR);
     allSecondsLeft -= hours * SECONDS_IN_HOUR;
-    const minutes = Math.floor(allSecondsLeft / SECONDS_IN_MINUTE);
+
+    let minutes = Math.floor(allSecondsLeft / SECONDS_IN_MINUTE);
+    minutes = leftPad(minutes, 2, '0');
     allSecondsLeft -= minutes * SECONDS_IN_MINUTE;
-    const seconds = allSecondsLeft;
+
+    const seconds = leftPad(allSecondsLeft, 2, '0');
 
     let timeLeft = `${hours} : ${minutes} : ${seconds}`;
     this.setState({ timeLeft });
@@ -94,7 +100,7 @@ class Timer extends Component {
           </Days>
         </DaysWrapper>
 
-        <Clock>
+        <Clock pastEvent={this.state.pastEvent}>
           {this.state.timeLeft}
         </Clock>
       </div>
