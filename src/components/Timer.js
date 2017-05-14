@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import leftPad from 'left-pad';
 
@@ -112,6 +111,4 @@ Timer.propTypes = {
   endTime: PropTypes.instanceOf(Date).isRequired,
 };
 
-const mapStatetoProps = state => ({ endTime: state.endTime });
-
-export default connect(mapStatetoProps)(Timer);
+export default Timer;

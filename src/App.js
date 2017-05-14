@@ -30,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Timer/>
+        <Timer endTime={this.props.endTime} />
         <button onClick={this.toggleSettingsModal}>Edit</button>
         <Settings/>
       </div>
@@ -38,4 +38,5 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+const mapStatetoProps = state => ({ endTime: state.endTime });
+export default connect(mapStatetoProps, actions)(App);
