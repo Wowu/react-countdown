@@ -3,10 +3,26 @@ import { connect } from 'react-redux';
 import WebFont from 'webfontloader';
 
 import Timer from './components/Timer';
+import IconButton from './components/Button';
 import Settings from './components/Settings';
 import * as actions from './actions';
+import styled from 'styled-components';
 
-import './App.css';
+const AppWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`;
 
 class App extends Component {
   constructor(props) {
@@ -29,11 +45,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <AppWrapper>
         <Timer endTime={this.props.endTime} />
-        <button onClick={this.toggleSettingsModal}>Edit</button>
+        <IconButton onClick={this.toggleSettingsModal} />
         <Settings/>
-      </div>
+      </AppWrapper>
     );
   }
 }

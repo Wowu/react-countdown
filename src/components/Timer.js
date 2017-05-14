@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import leftPad from 'left-pad';
 
 const DaysWrapper = styled.div`
-  margin: 0 auto;
-  width: 50px;
+  margin: 0 auto 34px;
+  display: ${props => props.daysLeft ? 'inline-block' : 'none'};
   height: auto;
   overflow: hidden;
 `;
@@ -93,7 +93,7 @@ class Timer extends Component {
   render() {
     return(
       <div className="Timer">
-        <DaysWrapper>
+        <DaysWrapper daysLeft={this.state.daysLeft}>
           <Days>
             {this.state.daysLeft}
           </Days>

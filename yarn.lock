@@ -2239,7 +2239,7 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "http://registry.flatpixels.pl/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-font-awesome@^4.7.0:
+font-awesome@^4.3.0, font-awesome@^4.7.0:
   version "4.7.0"
   resolved "http://registry.flatpixels.pl/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
 
@@ -4358,7 +4358,7 @@ promise@7.1.1, promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4:
+prop-types@^15.5.4, prop-types@^15.5.8:
   version "15.5.10"
   resolved "http://registry.flatpixels.pl/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -4475,6 +4475,13 @@ react-dom@^15.4.2:
     fbjs "^0.8.1"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+
+react-fa@^4.2.0:
+  version "4.2.0"
+  resolved "http://registry.flatpixels.pl/react-fa/-/react-fa-4.2.0.tgz#691e056c68ff4be8763917a21f7e3eaef3be8e0f"
+  dependencies:
+    font-awesome "^4.3.0"
+    prop-types "^15.5.8"
 
 react-input-slider@^1.5.0:
   version "1.6.0"
