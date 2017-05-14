@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import WebFont from 'webfontloader';
 
 import Timer from './components/Timer';
 import Settings from './components/Settings';
@@ -12,6 +13,14 @@ class App extends Component {
     super(props);
 
     this.toggleSettingsModal = this.toggleSettingsModal.bind(this);
+  }
+
+  componentWillMount() {
+    WebFont.load({
+      google: {
+        families: ['Quicksand:500,700'],
+      }
+    });
   }
 
   toggleSettingsModal() {

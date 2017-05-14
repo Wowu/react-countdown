@@ -1,6 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import styled from 'styled-components';
+
+const Days = styled.div`
+  font-family: 'Quicksand', Helvetica Neue, sans-serif;
+  font-size: 6.2rem;
+  font-weight: 500;
+  color: white;
+
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+`;
+
+const Clock = styled.div`
+  font-family: 'Quicksand', Helvetica Neue, sans-serif;
+  font-size: 8.5rem;
+  font-weight: 700;
+  color: white;
+
+  text-shadow: 0 11px 29px rgba(0, 0, 0, 0.2);
+`;
+
 class Timer extends Component {
   constructor(props) {
     super(props);
@@ -8,6 +28,7 @@ class Timer extends Component {
     this.state = {
       intervalId: null,
       timeLeft: '',
+      daysLeft: '',
     };
 
     this.updateTimeLeft = this.updateTimeLeft.bind(this);
@@ -24,7 +45,8 @@ class Timer extends Component {
   }
 
   updateTimeLeft() {
-    let allSecondsLeft = Math.round((this.props.endTime - new Date()) / 1000);
+    let allSecondsLeft =
+      Math.round((this.props.endTime - new Date()) / 1000);
 
     const pastEvent = allSecondsLeft < 0 ? true : false;
     allSecondsLeft = Math.abs(allSecondsLeft);
@@ -33,27 +55,30 @@ class Timer extends Component {
     const SECONDS_IN_HOUR = 60 * 60;
     const SECONDS_IN_MINUTE = 60;
 
-    const days = Math.floor(allSecondsLeft / SECONDS_IN_DAY);
-    allSecondsLeft -= days * SECONDS_IN_DAY;
+    const daysLeft = Math.floor(allSecondsLeft / SECONDS_IN_DAY);
+    this.setState({ daysLeft });
+
+    allSecondsLeft -= daysLeft * SECONDS_IN_DAY;
     const hours = Math.floor(allSecondsLeft / SECONDS_IN_HOUR);
     allSecondsLeft -= hours * SECONDS_IN_HOUR;
     const minutes = Math.floor(allSecondsLeft / SECONDS_IN_MINUTE);
     allSecondsLeft -= minutes * SECONDS_IN_MINUTE;
     const seconds = allSecondsLeft;
 
-    let timeLeft = '';
-    timeLeft += days ? `${days} days, ` : '';
-    timeLeft += hours ? `${hours} hours, ` : '';
-    timeLeft += minutes ? `${minutes} minutes, ` : '';
-    timeLeft += `${seconds} seconds `;
-    timeLeft += pastEvent ? 'passed' : 'left';
+    let timeLeft = `${hours} : ${minutes} : ${seconds}`;
     this.setState({ timeLeft });
   }
 
   render() {
     return(
       <div className="Timer">
-        {this.state.timeLeft}
+        <Days>
+          {this.state.daysLeft}
+        </Days>
+
+        <Clock>
+          {this.state.timeLeft}
+        </Clock>
       </div>
     );
   }
