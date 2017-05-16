@@ -2,7 +2,6 @@ import { UPDATE_COUNTDOWN, TOGGLE_MODAL } from './actions';
 
 const initialCountdownState = {
   endTime: new Date(),
-  name: '',
   modalVisible: false,
 }
 
@@ -12,7 +11,6 @@ export const countdown = (state = initialCountdownState, action) => {
       return {
         ...state,
         endTime: action.endTime,
-        name: action.countdownName,
       }
     case TOGGLE_MODAL:
       return {

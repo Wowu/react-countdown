@@ -12,3 +12,7 @@ body {
   background: -webkit-radial-gradient(center, circle cover, #a7a6af 1%,#6b6c79 100%);
   background: radial-gradient(circle, #a7a6af 1%,#6b6c79 100%);
 }
+
+* {
+  box-sizing: border-box;
+}

@@ -47,8 +47,8 @@ class App extends Component {
     return (
       <AppWrapper>
         <Timer endTime={this.props.endTime} />
-        <IconButton onClick={this.toggleSettingsModal} />
         <Settings/>
+        <IconButton onClick={this.toggleSettingsModal} />
       </AppWrapper>
     );
   }

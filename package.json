@@ -17,6 +17,7 @@
     "redux": "^3.6.0",
     "redux-localstorage": "^0.4.1",
     "redux-mock-store": "^1.2.3",
+    "reset-css": "^2.2.0",
     "styled-components": "^1.4.6",
     "webfontloader": "^1.6.27"
   },

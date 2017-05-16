@@ -7,10 +7,11 @@ import persistState from 'redux-localstorage';
 import { countdown } from './reducers';
 import App from './App';
 
+import 'reset-css';
 import './index.css';
 
 const enhancer = compose(
-  persistState(['endTime', 'name'], {
+  persistState(['endTime'], {
     serialize: (collection) => {
       return JSON.stringify(collection, (key, value) => {
         if (!isNaN(Date.parse(value))) {
