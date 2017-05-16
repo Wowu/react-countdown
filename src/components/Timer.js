@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import styled from 'styled-components';
 import leftPad from 'left-pad';
 
@@ -6,10 +7,10 @@ const DaysWrapper = styled.div`
   margin: 0 auto 34px;
   display: ${props => props.daysLeft ? 'inline-block' : 'none'};
   height: auto;
-  overflow: hidden;
 `;
 
 const Days = styled.div`
+  min-width: 28px;
   font-family: 'Quicksand', Helvetica Neue, sans-serif;
   font-size: 6.2rem;
   font-weight: 500;
