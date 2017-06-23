@@ -34,7 +34,7 @@ class App extends Component {
   componentWillMount() {
     WebFont.load({
       google: {
-        families: ['Quicksand:500,700'],
+        families: ['Quicksand:400,500,700'],
       }
     });
   }
