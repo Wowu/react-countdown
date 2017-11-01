@@ -1,0 +1,8 @@
+{
+  "name": "Countdown",
+  "short_name": "Countdown",
+  "description": "Simple React app",
+  "background_color": "#6b6c79",
+  "theme_color": "#6b6c79",
+  "display": "standalone"
+}
